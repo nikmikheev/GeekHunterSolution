@@ -24,4 +24,11 @@ README.md of your fork.
 
 Good luck!
 
-P.S: And unit tests! We love unit tests!
+The project used WPF -framework. For work with SQLite database, the following packages were used:
+"System.Data.SQLite"
+"System.Data.SQLite.Core"
+"System.Data.SQLite.EF6"
+
+For testing, NUnit-framework was planned, but I didn`t have enough time to implement the tests.
+
+
