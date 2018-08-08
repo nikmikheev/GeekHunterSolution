@@ -1,28 +1,18 @@
 <Window x:Class="GeekHunterProject.MainWindow"
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:src="clr-namespace:GeekHunterProject" 
     Title="List of Candidates"
     SizeToContent="WidthAndHeight" 
     ResizeMode="NoResize" Width="522.167" Height="681.747"
     >
     <Window.Resources>
-        <DataTemplate x:Key="groupingHeaderTemplate">
-            <TextBlock Text="{Binding Path=FirstName}"
-                       Foreground="Navy" FontWeight="Bold" FontSize="12"/>
-        </DataTemplate>
-
-        <Style x:Key="checkBoxStyle" TargetType="{x:Type CheckBox}">
-            <Setter Property="Foreground" Value="#333333" />
-            <Setter Property="FontWeight" Value="Bold"/>
-        </Style>
-
+    
     </Window.Resources>
 
     <StackPanel Margin="0,0,4,1">
 
         <TextBlock
-            Style="{StaticResource titleStyle}" Margin="8,0" Height="25"><Run Text="List of Candidates:"/></TextBlock>
+            Style="{StaticResource TitleStyle}" Margin="8,0" Height="25"><Run Text="List of Candidates:"/></TextBlock>
         <!--<Button Name="OpenAddSkill" Grid.Row="4" Grid.Column="1" Content="Add new skill" HorizontalAlignment="Center" Margin="8" 
             Click="OpenAddSkillWindow" />-->
         <DataGrid x:Name="candidateGrid" HorizontalAlignment="Left" Height="286" Margin="10,0,0,0" VerticalAlignment="Top" Width="497" AutoGenerateColumns="False" IsReadOnly="True" IsManipulationEnabled="False" SelectionChanged="CandidateGrid_SelectionChanged" AutomationProperties.IsColumnHeader="True" EnableRowVirtualization="False">
@@ -36,9 +26,9 @@
         </DataGrid>
         <Border BorderBrush="Black" BorderThickness="1" Height="49">
             <TextBlock
-                Style="{StaticResource titleStyle}" Margin="9,9,-9,0" ><Run Text="List of Candidate`s Skills:"/></TextBlock>
+                Style="{StaticResource TitleStyle}" Margin="9,9,-9,0" ><Run Text="List of Candidate`s Skills:"/></TextBlock>
         </Border>
-        <DataGrid x:Name="candidateSkillGrid" HorizontalAlignment="Left" Height="211" Margin="12,0,0,0" VerticalAlignment="Top" Width="490" AutoGenerateColumns="False" IsReadOnly="True" IsManipulationEnabled="False" EnableRowVirtualization="False">
+        <DataGrid x:Name="CandidateSkillGrid" HorizontalAlignment="Left" Height="211" Margin="12,0,0,0" VerticalAlignment="Top" Width="490" AutoGenerateColumns="False" IsReadOnly="True" IsManipulationEnabled="False" EnableRowVirtualization="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Header ="ID" Width="60"/>
                 <DataGridTextColumn Binding="{Binding Name}" Header ="Skill Name" Width="260"/>
@@ -50,6 +40,5 @@
             Click="OpenAddCandidateSkillWindow" Height="20" VerticalAlignment="Top" Width="196" Margin="158,0" />-->
         <Button x:Name="OpenAddCandidate" Content="Add new candidate" Click="OpenAddCandidateWindow" Height="25"/>
         <Button x:Name="OpenEditCandidate" Content="Edit selected candidate" Click="OpenEditCandidateWindow" Height="25"/>
-        <Button x:Name="OpenAddSkillToCandidate" Content="Add new skill to candidate" Click="OpenAddCandidateSkillWindow" Height="25"/>
     </StackPanel>
 </Window>

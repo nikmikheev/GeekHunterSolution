@@ -6,8 +6,8 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{6AFEA501-7402-47C4-805D-060448961C78}</ProjectGuid>
-    <RootNamespace>DataBindingLab</RootNamespace>
-    <AssemblyName>DataBindingLab</AssemblyName>
+    <RootNamespace>GeekHunterProject</RootNamespace>
+    <AssemblyName>GeekHunterProject</AssemblyName>
     <WarningLevel>4</WarningLevel>
     <OutputType>winexe</OutputType>
     <!-- Most people will use Publish dialog in Visual Studio to increment this -->
@@ -111,6 +111,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="model\Skill.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="view\AddCandidateWindow.xaml.cs">
       <DependentUpon>AddCandidateWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -6,9 +6,11 @@ namespace GeekHunterProject
     {
         public AddCandidateWindow(Candidate candidate)
         {
-            this.DataContext = candidate;
+            DataContext = candidate;
             CurrentCandidate = candidate; 
             InitializeComponent();
+            CandidateSkillGrid.ItemsSource = CurrentCandidate.SkillList;
+            AllSkillGrid.ItemsSource = CurrentCandidate.NoSkillList;
         }
 
         public Candidate CurrentCandidate { get; set; }
@@ -19,9 +21,41 @@ namespace GeekHunterProject
 
         private void SubmitCandidate(object sender, RoutedEventArgs e)
         {
-            CurrentCandidate = (Candidate)(this.DataContext);
-            this.DialogResult = true;
-            this.Close();
+            CurrentCandidate = (Candidate)DataContext;
+            DialogResult = true;
+            Close();
+        }
+
+        private void ButtonDeleteSkill_Click(object sender, RoutedEventArgs e)
+        {
+            var currentSkill = (Skill)CandidateSkillGrid.SelectedItem;
+            if (currentSkill != null)
+            {
+                CurrentCandidate.NoSkillList.Add(currentSkill);
+                CurrentCandidate.SkillList.Remove(currentSkill);
+                RefreshDataGrids();
+            }
+        }
+
+        private void ButtonAddSkill_Click(object sender, RoutedEventArgs e)
+        {
+            var currentSkill = (Skill)AllSkillGrid.SelectedItem;
+            if (currentSkill != null)
+            {
+                CurrentCandidate.SkillList.Add(currentSkill);
+                CurrentCandidate.NoSkillList.Remove(currentSkill);
+                RefreshDataGrids();
+            }
+
+        }
+
+        private void RefreshDataGrids()
+        {
+            CandidateSkillGrid.ItemsSource = null;
+            AllSkillGrid.ItemsSource = null;
+
+            CandidateSkillGrid.ItemsSource = CurrentCandidate.SkillList;
+            AllSkillGrid.ItemsSource = CurrentCandidate.NoSkillList;
         }
     }
 }

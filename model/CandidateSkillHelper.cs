@@ -9,7 +9,7 @@ namespace GeekHunterProject
     /// </summary>
     public class CandidateSkillHelper
     {
-        private DatabaseHelperClass databaseHelper;
+        private readonly DatabaseHelperClass databaseHelper;
 
         public CandidateSkillHelper(DatabaseHelperClass databaseHelper)
         {
@@ -18,7 +18,7 @@ namespace GeekHunterProject
 
         public int AddCandidateSkill(int candidateId, int newSkillId)
         {
-            int result = -1;
+            var result = -1;
             databaseHelper.CheckConnectionState();
 
             // Record already exists, nothing to add.  
@@ -28,7 +28,7 @@ namespace GeekHunterProject
                 return result;
             }
 
-            using (SQLiteCommand cmd = new SQLiteCommand(databaseHelper.Connection))
+            using (var cmd = new SQLiteCommand(databaseHelper.Connection))
             {
                 cmd.CommandText = @"INSERT INTO CandidateSkill(CandidateId, SkillID) 
                                     VALUES (@CandidateId, @SkillID)";
@@ -49,7 +49,7 @@ namespace GeekHunterProject
 
         public int DeleteCandidateSkill(int candidateId, int skillId)
         {
-            int result = -1;
+            var result = -1;
             databaseHelper.CheckConnectionState();
 
             // Record doesn`t exists, nothing to delete.  
@@ -59,7 +59,7 @@ namespace GeekHunterProject
                 return result;
             }
 
-            using (SQLiteCommand cmd = new SQLiteCommand(databaseHelper.Connection))
+            using (var cmd = new SQLiteCommand(databaseHelper.Connection))
             {
                 cmd.CommandText = @"DELETE FROM CandidateSkill 
                                     WHERE CandidateId = @CandidateId AND SkillId = @SkillId";
@@ -85,8 +85,8 @@ namespace GeekHunterProject
         /// <returns>bool</returns>
         public bool IsCandidateSkillExists(int candidateId, int skillId)
         {
-            int RowCount = 0;
-            using (SQLiteCommand cmd = new SQLiteCommand(databaseHelper.Connection))
+            var RowCount = 0;
+            using (var cmd = new SQLiteCommand(databaseHelper.Connection))
             {
                 cmd.CommandText = @"SELECT count(*) 
                                     FROM CandidateSkill 
@@ -97,14 +97,15 @@ namespace GeekHunterProject
                 cmd.Parameters.AddWithValue("@SkillId", skillId);
                 try
                 {
-                    RowCount = (int)(cmd.ExecuteScalar());
+                    var tmpRes = cmd.ExecuteScalar();
+                    RowCount = Convert.ToInt32(tmpRes);
                 }
                 catch (SQLiteException e)
                 {
                     Console.WriteLine(e.ToString());
                 }
             }
-            return (RowCount > 0);
+            return RowCount > 0;
         }
 
 

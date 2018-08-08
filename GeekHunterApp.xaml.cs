@@ -6,10 +6,10 @@ namespace GeekHunterProject
     {
         public CandidateHelper Candidates { get; private set; }
 
-        void AppStartup(object sender, StartupEventArgs args)
+        private void AppStartup(object sender, StartupEventArgs args)
         {
-            this.Candidates = new CandidateHelper();
-            MainWindow mainWindow = new MainWindow();
+            Candidates = new CandidateHelper();
+            var mainWindow = new MainWindow();
             mainWindow.candidateGrid.ItemsSource = Candidates.AllCandidates();
             mainWindow.Show();
         }

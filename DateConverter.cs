@@ -4,22 +4,23 @@ using System.Windows.Data;
 
 namespace GeekHunterProject
 {
-    [ValueConversion(typeof(DateTime), typeof(String))]
+    [ValueConversion(typeof(DateTime), typeof(string))]
     public class DateConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            DateTime date = (DateTime)value;
+            var date = (DateTime)value;
             return date.ToString();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            string strValue = value.ToString();
-            if (DateTime.TryParse(strValue, out DateTime resultDateTime))
+            if (value != null)
             {
-                return resultDateTime;
+                var strValue = value.ToString();
+                if (DateTime.TryParse(strValue, out var resultDateTime)) return resultDateTime;
             }
+
             return value;
         }
     }

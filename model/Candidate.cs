@@ -5,58 +5,45 @@ namespace GeekHunterProject
 {
     public class Candidate
     {
-        private int id;
-        private string lastName;
-        private DateTime enteredDate;
-        private List<Skill> skillList;
 
         #region Properties Getters and Setters
 
-        public int Id { get => id; set => id = value; }
+        public int Id { get; set; }
 
         public string FirstName { get; set; }
 
-        public string LastName
-        {
-            get { return this.lastName; }
-            set
-            {
-                this.lastName = value;
-            }
-        }
+        public string LastName { get; set; }
 
-        public DateTime EnteredDate
-        {
-            get { return this.enteredDate; }
-            set
-            {
-                this.enteredDate = value;
-            }
-        }
+        public DateTime EnteredDate { get; set; }
 
-        public List<Skill> SkillList { get => skillList; set => skillList = value; }
+        public List<Skill> SkillList { get; set; }
+
+        public List<Skill> NoSkillList { get; set; }
 
         #endregion
         public Candidate()
         {
-            this.skillList = new List<Skill>();
+            this.SkillList = new List<Skill>();
+            this.NoSkillList = new List<Skill>();
         }
 
         public Candidate(string firstName, string lastName, DateTime enteredDate)
         {
             this.FirstName = firstName;
-            this.lastName = lastName;
-            this.enteredDate = enteredDate;
-            this.skillList = new List<Skill>();
+            this.LastName = lastName;
+            this.EnteredDate = enteredDate;
+            this.SkillList = new List<Skill>();
+            this.NoSkillList = new List<Skill>();
         }
 
         public Candidate(int id, string firstName, string lastName, DateTime enteredDate)
         {
             this.Id = id;
             this.FirstName = firstName;
-            this.lastName = lastName;
-            this.enteredDate = enteredDate;
-            this.skillList = new List<Skill>();
+            this.LastName = lastName;
+            this.EnteredDate = enteredDate;
+            this.SkillList = new List<Skill>();
+            this.NoSkillList = new List<Skill>();
         }
 
     }
