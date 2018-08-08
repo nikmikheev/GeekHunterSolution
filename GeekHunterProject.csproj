@@ -130,7 +130,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="model\Candidate.cs" />
-    <Compile Include="model\Skill.cs" />
     <Compile Include="DateConverter.cs" />
   </ItemGroup>
   <ItemGroup>

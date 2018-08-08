@@ -25,7 +25,7 @@
             Style="{StaticResource titleStyle}" Margin="8,0" Height="25"><Run Text="List of Candidates:"/></TextBlock>
         <!--<Button Name="OpenAddSkill" Grid.Row="4" Grid.Column="1" Content="Add new skill" HorizontalAlignment="Center" Margin="8" 
             Click="OpenAddSkillWindow" />-->
-        <DataGrid x:Name="candidateGrid" HorizontalAlignment="Left" Height="286" Margin="10,0,0,0" VerticalAlignment="Top" Width="497" AutoGenerateColumns="False" IsReadOnly="True" IsManipulationEnabled="False" SelectionChanged="CandidateGrid_SelectionChanged">
+        <DataGrid x:Name="candidateGrid" HorizontalAlignment="Left" Height="286" Margin="10,0,0,0" VerticalAlignment="Top" Width="497" AutoGenerateColumns="False" IsReadOnly="True" IsManipulationEnabled="False" SelectionChanged="CandidateGrid_SelectionChanged" AutomationProperties.IsColumnHeader="True" EnableRowVirtualization="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Header ="ID" Width="60"/>
                 <DataGridTextColumn Binding="{Binding FirstName}" Header ="First Name" Width="140"/>
@@ -38,7 +38,7 @@
             <TextBlock
                 Style="{StaticResource titleStyle}" Margin="9,9,-9,0" ><Run Text="List of Candidate`s Skills:"/></TextBlock>
         </Border>
-        <DataGrid x:Name="candidateSkillGrid" HorizontalAlignment="Left" Height="239" Margin="12,0,0,0" VerticalAlignment="Top" Width="490" AutoGenerateColumns="False" IsReadOnly="True" IsManipulationEnabled="False" EnableRowVirtualization="False">
+        <DataGrid x:Name="candidateSkillGrid" HorizontalAlignment="Left" Height="211" Margin="12,0,0,0" VerticalAlignment="Top" Width="490" AutoGenerateColumns="False" IsReadOnly="True" IsManipulationEnabled="False" EnableRowVirtualization="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Header ="ID" Width="60"/>
                 <DataGridTextColumn Binding="{Binding Name}" Header ="Skill Name" Width="260"/>
@@ -49,6 +49,7 @@
         <Button x:Name="OpenAddSkillToCandidate" Content="Add new skill to candidate" HorizontalAlignment="Center" 
             Click="OpenAddCandidateSkillWindow" Height="20" VerticalAlignment="Top" Width="196" Margin="158,0" />-->
         <Button x:Name="OpenAddCandidate" Content="Add new candidate" Click="OpenAddCandidateWindow" Height="25"/>
+        <Button x:Name="OpenEditCandidate" Content="Edit selected candidate" Click="OpenEditCandidateWindow" Height="25"/>
         <Button x:Name="OpenAddSkillToCandidate" Content="Add new skill to candidate" Click="OpenAddCandidateSkillWindow" Height="25"/>
     </StackPanel>
 </Window>
